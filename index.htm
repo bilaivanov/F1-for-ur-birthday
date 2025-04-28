@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Racer!</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #000000, #434343);
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      font-size: 48px;
+      color: #ff0000;
+      margin-top: 40px;
+    }
+    p {
+      font-size: 22px;
+      margin: 20px;
+    }
+    .car {
+      width: 120px;
+      position: absolute;
+      top: 80%;
+      animation: drive 10s linear infinite;
+    }
+    .car:nth-child(2) {
+      animation-delay: 2s;
+      top: 70%;
+    }
+    .car:nth-child(3) {
+      animation-delay: 4s;
+      top: 60%;
+    }
+    @keyframes drive {
+      0% { left: -200px; }
+      100% { left: 110%; }
+    }
+    #boost-button {
+      padding: 12px 30px;
+      font-size: 20px;
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background 0.3s;
+      z-index: 1000;
+      position: relative;
+    }
+    #boost-button:hover {
+      background-color: #cc0000;
+    }
+    #finish-flag {
+      display: none;
+      width: 150px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      animation: wave 1s infinite;
+    }
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(10deg); }
+    }
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Selamat Ulang Tahun, Champion!</h1>
+  <p>Waktunya menyalip semua tantangan, melesat menuju impianmu!</p>
+
+  <img src="https://i.ibb.co/3R3FMGk/f1-car.png" class="car" alt="F1 Car 1">
+  <img src="https://i.ibb.co/3R3FMGk/f1-car.png" class="car" alt="F1 Car 2">
+  <img src="https://i.ibb.co/3R3FMGk/f1-car.png" class="car" alt="F1 Car 3">
+
+  <br>
+  <button id="boost-button" onclick="boostRace()">BOOST!</button>
+
+  <img id="finish-flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Racing_flag.svg/2048px-Racing_flag.svg.png" alt="Finish Flag">
+
+  <audio id="engine-sound" src="https://www.soundjay.com/transportation/race-car-2.mp3" preload="auto"></audio>
+  <audio id="background-music" src="https://cdn.pixabay.com/audio/2022/08/12/audio_7d4e476c49.mp3" preload="auto" loop></audio>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    window.onload = function() {
+      // Play background music
+      const bgm = document.getElementById('background-music');
+      bgm.volume = 0.3; // volume kecil
+      bgm.play();
+
+      // Confetti otomatis setelah 5 detik
+      setTimeout(() => {
+        confettiLaunch();
+      }, 5000);
+    };
+
+    function boostRace() {
+      // Play engine sound
+      const engine = document.getElementById('engine-sound');
+      engine.play();
+
+      // Munculkan bendera finish
+      document.getElementById('finish-flag').style.display = 'block';
+
+      // Launch another confetti
+      confettiLaunch();
+
+      // Tambah speed mobil
+      const cars = document.querySelectorAll('.car');
+      cars.forEach(car => {
+        car.style.animationDuration = "5s"; // lebih cepat
+      });
+
+      alert("BOOST!! Gaspol sampe Finish Line!");
+    }
+
+    function confettiLaunch() {
+      confetti({
+        particleCount: 250,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+    }
+  </script>
+
+</body>
+</html>
