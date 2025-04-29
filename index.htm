@@ -1,24 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Happy 18th Panpann</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-</head>
-<body>
-
-<audio id="bg-music" src="assets/bg-music.mp3" preload="auto"></audio>
-
-<div class="container">
-  <h1 class="typing"></h1>
-  <img src="assets/f1-car.png" class="f1-car" alt="F1 Car">
+<div class="slide" id="slide1">
+    <h1>Start Your Engines!</h1>
+    <h2>Join us for [Name]'s F1 Birthday Bash!</h2>
+    <button onclick="nextSlide()">Get Ready to Race!</button>
 </div>
-
-<canvas id="confetti-canvas"></canvas>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+<div class="slide" id="slide2" style="display:none;">
+    <h1>Race Day Details</h1>
+    <p>Date: [Date]</p>
+    <p>Time: [Time]</p>
+    <p>Location: [Venue/Address]</p>
+    <button onclick="nextSlide()">Meet the Team!</button>
+</div>
+<div class="slide" id="slide3" style="display:none;">
+    <h1>Pit Crew</h1>
+    <ul>
+        <li>[Guest 1]</li>
+        <li>[Guest 2]</li>
+        <li>[Guest 3]</li>
+        <!-- Add more guests as needed -->
+    </ul>
+    <button onclick="nextSlide()">Race Activities!</button>
+</div>
+<div class="slide" id="slide4" style="display:none;">
+    <h1>Race Activities</h1>
+    <ul>
+        <li>Go-Kart Racing</li>
+        <li>F1 Trivia</li>
+        <li>Cake Cutting</li>
+        <!-- Add more activities as needed -->
+    </ul>
+    <button onclick="nextSlide()">RSVP Now!</button>
+</div>
+<div class="slide" id="slide5" style="display:none;">
+    <h1>RSVP</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <label>Will you attend?</label>
+        <select id="attendance">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</div>
